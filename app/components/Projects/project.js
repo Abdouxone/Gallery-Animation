@@ -1,0 +1,18 @@
+export const GALLERY = [
+  { name: "Sky", year: "2016", img: "/img1.jpg" },
+  { name: "Sunset", year: "2020", img: "/img2.jpg" },
+  { name: "Shop", year: "2022", img: "/img3.jpg" },
+  { name: "Japan", year: "2012", img: "/img4.jpg" },
+  { name: "Tokyo", year: "2004", img: "/img5.jpg" },
+  { name: "Fuji", year: "2024", img: "/img6.jpg" },
+  { name: "Algiers", year: "2016", img: "/img7.jpg" },
+  { name: "Culture", year: "2012", img: "/img8.jpg" },
+  { name: "Tlemcen", year: "2014", img: "/img9.jpg" },
+  { name: "Oran", year: "2015", img: "/img10.jpg" },
+  { name: "Khemis", year: "2017", img: "/img11.jpg" },
+  { name: "Clock", year: "2010", img: "/img12.jpg" },
+  { name: "", year: "2002", img: "/img13.jpg" },
+  { name: "Cure", year: "2012", img: "/img14.jpg" },
+  { name: "Cart", year: "2011", img: "/img15.jpg" },
+  { name: "Grass", year: "2015", img: "/img16.jpg" },
+];
