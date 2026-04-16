@@ -48,7 +48,7 @@ export default function Home() {
 
   return (
     <>
-      {/* {isLoading && (
+      {isLoading && (
         <div
           style={{
             position: "fixed",
@@ -64,17 +64,17 @@ export default function Home() {
         >
           Loading...
         </div>
-      )} */}
-      {/* <div style={{ visibility: isLoading ? "hidden" : "visible" }}> */}
-      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
-      <section className="intro">
-        <p>Intro Section</p>
-      </section>
-      <Projects lenisRef={lenisRef} />
-      <section className="outro">
-        <p>Outro Section</p>
-      </section>
-      {/* </div> */}
+      )}
+      <div style={{ visibility: isLoading ? "hidden" : "visible" }}>
+        <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
+        <section className="intro">
+          <p>Intro Section</p>
+        </section>
+        <Projects lenisRef={lenisRef} />
+        <section className="outro">
+          <p>Outro Section</p>
+        </section>
+      </div>
     </>
   );
 }
