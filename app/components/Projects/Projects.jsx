@@ -6,7 +6,7 @@ import gsap from "gsap";
 const IMAGES_PER_ROW = 9;
 const TOTAL_ROWS = 10;
 
-export default function Projects({ lenisRef }) {
+export default function Projects() {
   const sectionRef = useRef(null);
   const rowsRef = useRef([]);
   const rowStartWidth = useRef(125);
@@ -38,24 +38,8 @@ export default function Projects({ lenisRef }) {
 
     section.style.height = `${expandedSectionHeight}px`;
 
-    // const warmup = () => {
-    //   rowsRef.current.forEach((row) => {
-    //     if (!row) return;
-    //     row.style.width = `${rowEndWidth.current}%`;
-    //   });
-
-    //   setTimeout(() => {
-    //     rowsRef.current.forEach((row) => {
-    //       if (!row) return;
-    //       row.style.width = `${rowStartWidth.current}%`;
-    //     });
-    //   }, 50);
-    // };
-
-    // setTimeout(warmup, 200); // run after lenis is ready
-
-    function onScrollUpdate({ scroll }) {
-      const scrollY = scroll;
+    function onScrollUpdate() {
+      const scrollY = window.scrollY;
       const viewportHeight = window.innerHeight;
 
       rows.forEach((row) => {
@@ -76,13 +60,7 @@ export default function Projects({ lenisRef }) {
       });
     }
 
-    // gsap.ticker.add(onScrollUpdate);
-    const timeout = setTimeout(() => {
-      const lenis = lenisRef.current?.lenis;
-      console.log("lenis:", lenis); // check if this logs the lenis instance
-      if (!lenis) return;
-      lenis.on("scroll", onScrollUpdate);
-    }, 100);
+    gsap.ticker.add(onScrollUpdate);
 
     const handleResize = () => {
       const isMobile = window.innerWidth < 1000;
@@ -104,8 +82,7 @@ export default function Projects({ lenisRef }) {
     window.addEventListener("resize", handleResize);
 
     return () => {
-      // gsap.ticker.remove(onScrollUpdate);
-      clearTimeout(timeout);
+      gsap.ticker.remove(onScrollUpdate);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
@@ -134,7 +111,7 @@ export default function Projects({ lenisRef }) {
           {rowImage.map((image, colIndex) => (
             <div key={colIndex} className="project">
               <div className="project-img">
-                <img src={image.img} alt={image.name} loading="lazy" />
+                <img src={image.img} alt={image.name} />
               </div>
               <div className="project-info">
                 <p>{image.name}</p>
