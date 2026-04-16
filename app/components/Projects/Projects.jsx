@@ -38,6 +38,22 @@ export default function Projects({ lenisRef }) {
 
     section.style.height = `${expandedSectionHeight}px`;
 
+    const warmup = () => {
+      rowsRef.current.forEach((row) => {
+        if (!row) return;
+        row.style.width = `${rowEndWidth.current}%`;
+      });
+
+      setTimeout(() => {
+        rowsRef.current.forEach((row) => {
+          if (!row) return;
+          row.style.width = `${rowStartWidth.current}%`;
+        });
+      }, 50);
+    };
+
+    setTimeout(warmup, 200); // run after lenis is ready
+
     function onScrollUpdate({ scroll }) {
       const scrollY = scroll;
       const viewportHeight = window.innerHeight;
