@@ -22,28 +22,26 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // wait for all images to load
-    const images = document.querySelectorAll("img");
+    const imageSources = GALLERY.map((item) => item.img); // your image paths
+
     let loaded = 0;
 
-    function onLoad() {
-      loaded++;
-      if (loaded === images.length) {
-        setIsLoading(false);
-      }
-    }
-
-    images.forEach((img) => {
-      if (img.complete) {
-        onLoad();
-      } else {
-        img.addEventListener("load", onLoad);
-      }
+    imageSources.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loaded++;
+        if (loaded === imageSources.length) {
+          setIsLoading(false); // ✅ only show when ALL decoded
+        }
+      };
+      img.onerror = () => {
+        loaded++;
+        if (loaded === imageSources.length) setIsLoading(false);
+      };
     });
 
-    // safety fallback — hide loader after 5s no matter what
     const fallback = setTimeout(() => setIsLoading(false), 5000);
-
     return () => clearTimeout(fallback);
   }, []);
 
