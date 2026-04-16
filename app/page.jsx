@@ -22,33 +22,33 @@ export default function Home() {
     return () => gsap.ticker.remove(update);
   }, []);
 
-  useEffect(() => {
-    const imageSources = GALLERY.map((item) => item.img); // your image paths
+  // useEffect(() => {
+  //   const imageSources = GALLERY.map((item) => item.img); // your image paths
 
-    let loaded = 0;
+  //   let loaded = 0;
 
-    imageSources.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
-        loaded++;
-        if (loaded === imageSources.length) {
-          setIsLoading(false); // ✅ only show when ALL decoded
-        }
-      };
-      img.onerror = () => {
-        loaded++;
-        if (loaded === imageSources.length) setIsLoading(false);
-      };
-    });
+  //   imageSources.forEach((src) => {
+  //     const img = new Image();
+  //     img.src = src;
+  //     img.onload = () => {
+  //       loaded++;
+  //       if (loaded === imageSources.length) {
+  //         setIsLoading(false); // ✅ only show when ALL decoded
+  //       }
+  //     };
+  //     img.onerror = () => {
+  //       loaded++;
+  //       if (loaded === imageSources.length) setIsLoading(false);
+  //     };
+  //   });
 
-    const fallback = setTimeout(() => setIsLoading(false), 5000);
-    return () => clearTimeout(fallback);
-  }, []);
+  //   const fallback = setTimeout(() => setIsLoading(false), 5000);
+  //   return () => clearTimeout(fallback);
+  // }, []);
 
   return (
     <>
-      {isLoading && (
+      {/* {isLoading && (
         <div
           style={{
             position: "fixed",
@@ -64,17 +64,17 @@ export default function Home() {
         >
           Loading...
         </div>
-      )}
-      <div style={{ visibility: isLoading ? "hidden" : "visible" }}>
-        <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
-        <section className="intro">
-          <p>Intro Section</p>
-        </section>
-        <Projects lenisRef={lenisRef} />
-        <section className="outro">
-          <p>Outro Section</p>
-        </section>
-      </div>
+      )} */}
+      {/* <div style={{ visibility: isLoading ? "hidden" : "visible" }}> */}
+      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
+      <section className="intro">
+        <p>Intro Section</p>
+      </section>
+      <Projects lenisRef={lenisRef} />
+      <section className="outro">
+        <p>Outro Section</p>
+      </section>
+      {/* </div> */}
     </>
   );
 }
