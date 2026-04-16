@@ -2,6 +2,7 @@
 import Projects from "./components/Projects/Projects";
 
 import { ReactLenis } from "lenis/react";
+import { GALLERY } from "./components/Projects/project";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
