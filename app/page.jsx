@@ -22,29 +22,29 @@ export default function Home() {
     return () => gsap.ticker.remove(update);
   }, []);
 
-  // useEffect(() => {
-  //   const imageSources = GALLERY.map((item) => item.img); // your image paths
+  useEffect(() => {
+    const imageSources = GALLERY.map((item) => item.img); // your image paths
 
-  //   let loaded = 0;
+    let loaded = 0;
 
-  //   imageSources.forEach((src) => {
-  //     const img = new Image();
-  //     img.src = src;
-  //     img.onload = () => {
-  //       loaded++;
-  //       if (loaded === imageSources.length) {
-  //         setIsLoading(false); // ✅ only show when ALL decoded
-  //       }
-  //     };
-  //     img.onerror = () => {
-  //       loaded++;
-  //       if (loaded === imageSources.length) setIsLoading(false);
-  //     };
-  //   });
+    imageSources.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loaded++;
+        if (loaded === imageSources.length) {
+          setIsLoading(false); // ✅ only show when ALL decoded
+        }
+      };
+      img.onerror = () => {
+        loaded++;
+        if (loaded === imageSources.length) setIsLoading(false);
+      };
+    });
 
-  //   const fallback = setTimeout(() => setIsLoading(false), 5000);
-  //   return () => clearTimeout(fallback);
-  // }, []);
+    const fallback = setTimeout(() => setIsLoading(false), 5000);
+    return () => clearTimeout(fallback);
+  }, []);
 
   return (
     <>
