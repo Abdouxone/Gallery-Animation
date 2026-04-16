@@ -46,25 +46,24 @@ export default function Home() {
     return () => clearTimeout(fallback);
   }, []);
 
+  if (isLoading) {
+    return (
+      <div className="flex w-screen h-screen  items-center justify-center">
+        {/* <img
+          className="w-10 h-10 animate-spin"
+          width={10}
+          height={10}
+          style={{ width: "50px", height: "50px" }}
+          src="https://www.svgrepo.com/show/491270/loading-spinner.svg"
+          alt="Loading icon"
+        /> */}
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   return (
     <>
-      {isLoading && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "#000",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 9999,
-            color: "#fff",
-            fontSize: "1.5rem",
-          }}
-        >
-          Loading...
-        </div>
-      )}
       <div style={{ visibility: isLoading ? "hidden" : "visible" }}>
         <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
         <section className="intro">
